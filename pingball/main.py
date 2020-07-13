@@ -13,14 +13,20 @@ class PongBall(Widget):
 # latese position of the ball = current velocity + current position 
     def move(self):
         self.pos = Vector(*self.velocity) + self.pos
-
+ # moving the ball by calling the move function
 class PongGame(Widget):
     ball =ObjectProperty(None)
     def serve_ball(self):
         self.ball.velocity = Vector(4,0).rotate(randint(0, 360))
     def update(self, dt):
-        # moving the ball by calling the move function
         self.ball.move()
+        #  bouncing the ball top and bottom
+        if (self.ball.y < 0) or (self.ball.y > self.height -50):
+            self.ball.velocity_y *= -1
+
+# left and right
+        if (self.ball.x < 0) or (self.ball.x > self.width -50):
+            self.ball.velocity_x *= -1
 
 
 class PongApp(App):
