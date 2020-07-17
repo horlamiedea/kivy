@@ -4,6 +4,9 @@ from kivy.properties import NumericProperty, ReferenceListProperty, ObjectProper
 from kivy.vector import Vector
 from kivy.clock import Clock
 from random import randint
+from kivy.core.window import Window
+# RGBA used to change color and the last one is for opacity of the colors
+Window.clearcolor = (0,1,1,1)
 
 class PongPaddle(Widget):
     score = NumericProperty(0)
